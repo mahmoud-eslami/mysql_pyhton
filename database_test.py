@@ -14,11 +14,34 @@ mydb = mysql.connector.connect(
 
 customCursor = mydb.cursor()
 
-# customCursor.execute('show databases')
-# customCursor.execute('show tables')
-# customCursor.execute('desc user')
+customCursor.execute('show databases')
+customCursor.execute('show tables')
+customCursor.execute('desc user')
 customCursor.execute('select * from user')
+
+    
+print('Please Enter Id :')    
+personId = input()    
+intPersonId = int(personId)
+
+print('Please Enter Email :')    
+
+email = input()
+print('Please Enter userName :')    
+
+username = input()
+print('Please Enter passWord :')    
+
+password = input()
+
+
+query = (f'INSERT INTO user VALUES({intPersonId},"{email}","{username}","{password}")')
+show_column = 'SELECT * FROM user'
+
+customCursor.execute(query)
+customCursor.execute(show_column)
 
 for x in customCursor:
     print(x)
-    
+
+
